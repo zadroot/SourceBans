@@ -1,9 +1,10 @@
-public FeedController extends Controller
+<?php
+class FeedController extends Controller
 {
 	public function actionIndex()
 	{
 		$plugin = SBPlugin::model()->findById('FeedPlugin');
-		$view = $plugin->getViewFile('views.index');
+		$view = $plugin->getViewFile('index');
 		
 		$this->renderPartial($view, array(
 			'bans' => $this->getBans(),

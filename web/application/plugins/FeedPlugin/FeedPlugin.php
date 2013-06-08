@@ -41,10 +41,10 @@ class FeedPlugin extends SBPlugin
 		
 		try
 		{
-			// Create tables
-			Yii::app()->db->createCommand()->createTable('', array(
-				'id' => 'int(5) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY',
-			), 'ENGINE=InnoDB DEFAULT CHARSET=utf8');
+			$setting = new SBSetting;
+			$setting->name = 'feed_item_count';
+			$setting->value = 10;
+			$setting->save();
 			
 			$transaction->commit();
 			return true;
@@ -58,14 +58,9 @@ class FeedPlugin extends SBPlugin
 	
 	public function runSettings()
 	{
-		$setting = new SBSetting;
-		$setting->name = 'feed_item_count';
-		$setting->value = 10;
-		$setting->save();
-
-		$itemCount = SourceBans::app()->settings->feed_item_count;
-		// Settings view
-		//Yii::app()->urlManager->rules[]=;
+		return array(
+			'itemCount' => SourceBans::app()->settings->feed_item_count,
+		);
 	}
 	
 	public function runUninstall()
@@ -74,8 +69,7 @@ class FeedPlugin extends SBPlugin
 		
 		try
 		{
-			// Drop tables
-			Yii::app()->db->createCommand()->dropTable('');
+			SBSetting::model()->deleteByPk('feed_item_count');
 			
 			$transaction->commit();
 			return true;
