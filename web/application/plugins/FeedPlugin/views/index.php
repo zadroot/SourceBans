@@ -10,6 +10,7 @@
 	/*}else{
 		header('Content-Type: text/xml; charset=UTF-8');
 	};
+	 * The items BELOW this line are just basic index implementations, they include header compatibility for RSS feeds
 	 */
 ?>
 	<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

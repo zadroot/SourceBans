@@ -1,3 +1,10 @@
+<?php
+ /*
+  * This is the settings page PHP, the following is an incomplete example of
+  * Settings.
+  * This page, by default, will be at http://yourdomain.com/index.php/plugins/settings/FeedPlugin
+  */
+?>
 In order to make use of this feed, you can use of the following (in order of recommendation):
 <br />
 <a href="<?php echo (Yii::app()->request->getBaseUrl(true)); ?>/feed.rss" target="_blank">.rss</a>
